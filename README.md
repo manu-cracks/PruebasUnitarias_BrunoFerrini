@@ -221,7 +221,7 @@ Time:        0.612 s
 ---
 
 # 👨‍💻 Autor
-
+# Estudiante
 **Manuel Elias Ore Huasaja**
 **Yordi Ajeo Atao Huaman**
 
