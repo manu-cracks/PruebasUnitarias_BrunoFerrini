@@ -1,5 +1,4 @@
 # .github/workflows/ci-jest.yml
-# Pipeline: ejecuta los tests de Jest en cada Push o Pull Request a main
 name: CI - Tests Unitarios Jest
 
 on:
@@ -14,45 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Descargar el código del repositorio
       - name: Descargar código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      # Paso 2: Instalar Node.js 20 (versión oficial del curso)
       - name: Instalar Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: 'npm'
 
-      # Paso 3: Instalar las dependencias del proyecto (incluye Jest)
       - name: Instalar dependencias
         run: npm install
 
-      # Paso 4: Ejecutar todos los tests unitarios
-      - name: Ejecutar tests con cobertura (Quality Gate)
+      - name: Ejecutar tests con Cobertura (Quality Gate)
         run: npm run test:coverage
 
-
-
       # ==========================================
-      #INTEGRACIÓN CON SONARCLOUD
-      # ==========================================
-      - name: Análisis SonarCloud
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
-
-
-
-      # ==========================================
-      # REPORTE DE COBERTURA
+      # NUEVO PASO: SUBIR EL REPORTE DE COBERTURA
       # ==========================================
       - name: Guardar reporte como artefacto
         uses: actions/upload-artifact@v4
-        if: always() 
+        if: always() # Obliga a subirlo incluso si algún test llega a fallar
         with:
-          name: reporte-cobertura-bruno-ferrini 
-          path: coverage/lcov-report/            
-          retention-days: 12
+          name: reporte-cobertura-bruno-ferrini # El nombre que tendrá el archivo zip
+          path: coverage/lcov-report/            # La ruta de la carpeta que va a empaquetar
+          retention-days: 7                     # El reporte se guardará en GitHub por 7 días
