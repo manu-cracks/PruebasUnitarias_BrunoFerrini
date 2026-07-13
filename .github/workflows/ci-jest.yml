@@ -32,6 +32,20 @@ jobs:
       # Paso 4: Ejecutar todos los tests unitarios
       - name: Ejecutar tests con cobertura (Quality Gate)
         run: npm run test:coverage
+
+
+
+      # ==========================================
+      #INTEGRACIÓN CON SONARCLOUD
+      # ==========================================
+      - name: Análisis SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
+
+
+
       # ==========================================
       # REPORTE DE COBERTURA
       # ==========================================
