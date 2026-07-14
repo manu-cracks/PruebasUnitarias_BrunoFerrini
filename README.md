@@ -1,5 +1,9 @@
 # 🧪 Laboratorio 05 - Pruebas Unitarias Automatizadas con TDD
+# runo Ferrini Checkout TDD
 
+![CI Jest](https://github.com/manu-cracks/PruebasUnitarias_BrunoFerrini/actions/workflows/ci-jest.yml/badge.svg)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=manu-cracks_PruebasUnitarias_BrunoFerrini2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=manu-cracks_PruebasUnitarias_BrunoFerrini2)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=manu-cracks_PruebasUnitarias_BrunoFerrini2&metric=coverage)](https://sonarcloud.io/summary/new_code?id=manu-cracks_PruebasUnitarias_BrunoFerrini2)
 ## 📋 Información General
 
 | Campo | Detalle |
@@ -223,7 +227,7 @@ Time:        0.612 s
 # 👨‍💻 Autor
 # Estudiante
 **Manuel Elias Ore Huasaja**
-**Yordi Ajeo Atao Huaman**
+
 
 Curso: IS-489 Pruebas y Aseguramiento de Calidad de Software  
 Universidad Nacional de San Cristóbal de Huamanga
