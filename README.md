@@ -10,7 +10,7 @@
 ## 📂 Documentos Académicos e Informes Completos
 > 📌 **Acceso a Evidencias de Laboratorio:** Puedes visualizar, revisar y descargar todos los informes monográficos formales (PDF) que contienen las capturas de pantalla del proceso, logs detallados y análisis de métricas en el siguiente enlace:
 >
-> 📁 **[Carpeta de Google Drive - Informes de Laboratorio IS-489 (Manuel Ore)](https://docs.google.com/document/d/1WPDTy58ORqYQ6aLZ5MpLdj1MVMqgKcTaLO3Tx5ljZo0/edit?usp=sharing)**
+> 📁 **[Carpeta de Google Drive - Informes de Laboratorio IS-489 (Manuel Ore)](https://docs.google.com/document/d/1QEk_xvz5a-LiyRmwTdsFWHxBQmS_DmGUIa2xsx6OLiE/edit?usp=sharing)**
 
 ---
 
