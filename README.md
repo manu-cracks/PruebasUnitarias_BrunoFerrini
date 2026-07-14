@@ -1,9 +1,19 @@
-# 🧪 Laboratorio 05 - Pruebas Unitarias Automatizadas con TDD
-# runo Ferrini Checkout TDD
+# 🧪 Módulo de Aseguramiento de la Calidad de Software: Bruno Ferrini Checkout
+## Laboratorio 05 (TDD) | Laboratorio 08 (CI) | Laboratorio 09 (SonarCloud)
 
 ![CI Jest](https://github.com/manu-cracks/PruebasUnitarias_BrunoFerrini/actions/workflows/ci-jest.yml/badge.svg)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=manu-cracks_PruebasUnitarias_BrunoFerrini2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=manu-cracks_PruebasUnitarias_BrunoFerrini2)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=manu-cracks_PruebasUnitarias_BrunoFerrini2&metric=coverage)](https://sonarcloud.io/summary/new_code?id=manu-cracks_PruebasUnitarias_BrunoFerrini2)
+
+---
+
+## 📂 Documentos Académicos e Informes Completos
+> 📌 **Acceso a Evidencias de Laboratorio:** Puedes visualizar, revisar y descargar todos los informes monográficos formales (PDF) que contienen las capturas de pantalla del proceso, logs detallados y análisis de métricas en el siguiente enlace:
+>
+> 📁 **[Carpeta de Google Drive - Informes de Laboratorio IS-489 (Manuel Ore)](https://docs.google.com/document/d/1WPDTy58ORqYQ6aLZ5MpLdj1MVMqgKcTaLO3Tx5ljZo0/edit?usp=sharing)**
+
+---
+
 ## 📋 Información General
 
 | Campo | Detalle |
@@ -11,81 +21,52 @@
 | Facultad | Ingeniería de Minas, Geología y Civil |
 | Escuela Profesional | Ingeniería de Sistemas |
 | Asignatura | IS-489 Pruebas y Aseguramiento de Calidad de Software |
-| Docente | Ing. Lizbeth Jaico Quispe |
+| Docente | Ing. Lizbeth Jaico Quispe[cite: 1, 2] |
 | Semestre | 2026-I |
-| Sistema Analizado | Bruno Ferrini (E-commerce de moda y calzado) |
+| Estudiante | Manuel Elias Yahve Ore Huasaja[cite: 2] |
+| Sistema Analizado | Bruno Ferrini (E-commerce de moda y calzado)[cite: 2] |
 | Módulo Evaluado | Procesamiento de Pago y Envío (Checkout) |
-| Metodología | Test Driven Development (TDD) |
+| Metodología | Test-Driven Development (TDD) + Integración Continua (CI) + Análisis Estático |
 
 ---
 
 # 📖 Descripción del Sistema
 
-**Bruno Ferrini** es una plataforma de comercio electrónico enfocada en la venta de:
-
-- 👞 Calzado de cuero
-- 👔 Ropa
-- 👜 Accesorios de moda
-
-La plataforma permite a los clientes:
-
-- Visualizar productos
-- Gestionar un carrito de compras
-- Aplicar cupones promocionales
-- Seleccionar métodos de envío
-- Realizar pagos seguros con tarjetas bancarias
+**Bruno Ferrini** es una plataforma de comercio electrónico enfocada en la venta de calzado de cuero, ropa y accesorios de moda[cite: 2]. La solución de software automatiza los flujos de negocio esenciales para el cliente[cite: 2]:
+- Visualización interactiva de productos.
+- Gestión persistente del carrito de compras.
+- Aplicación dinámica de cupones promocionales.
+- Selección y cálculo de métodos de envío.
+- Procesamiento de pagos transaccionales seguros con tarjetas bancarias.
 
 ---
 
-# 🎯 Módulo Seleccionado
+# 🎯 Módulo Seleccionado: Checkout
 
-## Checkout (Procesamiento de Pago y Envío)
+Se seleccionó el módulo de **Checkout (Procesamiento de Pago y Envío)** por ser el núcleo crítico transaccional del sistema.
 
-Se seleccionó este módulo por ser el núcleo transaccional del sistema.
+### Justificación Técnica
+Cualquier fallo de lógica en esta sección compromete directamente:
+- 💰 Las finanzas operativas de la organización.
+- 🛒 La experiencia de usuario y tasa de conversión.
+- 📦 La consistencia de datos en el inventario y logística.
 
-### Justificación
-
-Un error en este proceso puede afectar:
-
-- 💰 Las finanzas de la empresa
-- 🛒 La experiencia del cliente
-- 📦 La gestión de pedidos
-
-La automatización de pruebas permite evitar regresiones futuras y garantizar la estabilidad del sistema.
+La automatización de pruebas y el control estático garantizan la estabilidad del software ante refactorizaciones o actualizaciones continuas.
 
 ---
 
-# ✅ Criterios de Aceptación
+# ✅ Criterios de Aceptación (CAs)
 
-### CA-01
-Permitir la compra únicamente cuando:
-
-- Existan productos en el carrito
-- Dirección válida
-- Teléfono válido
-- Tarjeta de 16 dígitos
-
-### CA-02
-Rechazar compras menores a **S/. 50.00**
-
-### CA-03
-Validar cupones:
-
-- Longitud mínima: 5 caracteres
-- Longitud máxima: 10 caracteres
-- Existencia en base de datos
-
-### CA-04
-Validar teléfono:
-
-- Exactamente 9 dígitos
-- Solo números
+* **CA-01:** Permitir la compra únicamente si existen productos en el carrito, la dirección y teléfono son válidos, y el número de tarjeta posee exactamente 16 dígitos numéricos.
+* **CA-02:** Rechazar transacciones con montos netos inferiores a **S/. 50.00**.
+* **CA-03:** Validar cupones de descuento bajo reglas de longitud (mínimo 5, máximo 10 caracteres) y verificar su existencia en la base de datos de la plataforma.
+* **CA-04:** Validar que el formato del teléfono celular corresponda exactamente a 9 dígitos numéricos sin caracteres especiales.
 
 ---
 
 # 🧪 Casos de Prueba Implementados
 
-| ID | Caso de Prueba | Técnica | Estado |
+| ID | Caso de Prueba | Técnica Aplicada | Estado |
 |------|------|------|------|
 | TC-01 | Compra exitosa estándar | Clase Válida | ✅ PASS |
 | TC-02 | Cupón con longitud mínima válida | Clase Válida | ✅ PASS |
@@ -100,50 +81,25 @@ Validar teléfono:
 
 ---
 
-# 🔄 Aplicación de TDD
+# 🔄 Flujo del Pipeline de Aseguramiento de la Calidad (QA)
 
-## 🔴 Fase RED
+El proyecto implementa un ecosistema moderno de desarrollo enfocado en la estabilidad del código a través de tres fases complementarias:
 
-Primero se desarrollaron las pruebas unitarias utilizando Jest antes de implementar la lógica del sistema.
+### 1️⃣ Fase TDD (Laboratorio 05)
+El desarrollo se guio bajo la metodología **Test-Driven Development**:
+* **Fase RED:** Escritura de la suite de pruebas unitarias en **Jest** definiendo las reglas de los CAs. Las pruebas fallaron exitosamente debido a la inexistencia de lógica funcional.
+* **Fase GREEN:** Codificación de la lógica mínima requerida en `checkoutBrunoFerrini.js` hasta lograr que la totalidad de los casos de prueba se ejecuten con éxito (100% de éxito).
 
-![Fase RED - Pruebas Fallidas 1](FAIL1.png)
+### 2️⃣ Fase de Integración Continua - CI (Laboratorio 08)
+Se automatizó la ejecución de la suite de pruebas mediante un workflow nativo de **GitHub Actions** (`ci-jest.yml`). 
+* El pipeline se activa ante cada evento de `push` o `pull_request` sobre la rama `main`.
+* Levanta un contenedor con Ubuntu, inicializa Node.js, instala dependencias, ejecuta las pruebas de Jest y exporta dinámicamente un reporte físico de cobertura (`coverage/lcov.info`) como un **Artefacto de compilación**.
 
-![Fase RED - Pruebas Fallidas 2](FAIL2.png)
-
-### Tecnologías utilizadas
-
-- Node.js
-- Jest
-
-### Configuración
-
-```json
-{
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
-  }
-}
-```
-
----
-
-## 🟢 Fase GREEN
-
-Posteriormente se implementó la lógica mínima necesaria para que todas las pruebas fueran exitosas.
-
-![Fase GREEN - Pruebas Exitosas](PASS.png)
-
-### Validaciones implementadas
-
-- Carrito no vacío
-- Dirección obligatoria
-- Teléfono de 9 dígitos
-- Tarjeta de 16 dígitos
-- Monto mínimo de compra
-- Validación de cupones
-- Verificación de existencia de cupones
+### 3️⃣ Fase de Análisis Estático de Código (Laboratorio 09)
+Se integró el pipeline de GitHub Actions con **SonarCloud** para auditar la salud general de la aplicación sin interferir con el flujo mecánico de ejecución:
+* **Quality Gate:** Aprobado (**PASSED**) de forma automática al superar el umbral mínimo del 70% de cobertura.
+* **Análisis de Deuda Técnica:** 0 minutos de deuda técnica acumulada y 0 Code Smells detectados.
+* **Seguridad y Confiabilidad:** Clasificación A (0 Vulnerabilidades, 0 Bugs y 0.0% de código duplicado).
 
 ---
 
@@ -152,82 +108,19 @@ Posteriormente se implementó la lógica mínima necesaria para que todas las pr
 ```text
 bruno-ferrini-checkout-tdd/
 │
+├── .github/
+│   └── workflows/
+│       └── ci-jest.yml             # Pipeline de Integración Continua (Actions)
+│
 ├── src/
 │   └── checkout/
-│       └── checkoutBrunoFerrini.js
+│       └── checkoutBrunoFerrini.js # Lógica de negocio del Checkout
 │
 ├── tests/
-│   └── checkoutBrunoFerrini.test.js
+│   └── checkoutBrunoFerrini.test.js # Suite de pruebas unitarias (Jest)
 │
-├── package.json
+├── coverage/                       # Reportes locales de cobertura (omitidos en Git)
 │
-└── README.md
-```
-
----
-
-# 🚀 Ejecución del Proyecto
-
-## Instalar dependencias
-
-```bash
-npm install
-```
-
-## Ejecutar pruebas
-
-```bash
-npm test
-```
-
-## Ejecutar pruebas en modo observación
-
-```bash
-npm run test:watch
-```
-
-## Generar reporte de cobertura
-
-```bash
-npm run test:coverage
-```
-
----
-
-# 📊 Resultados Obtenidos
-
-```bash
-PASS tests/checkoutBrunoFerrini.test.js
-
-Test Suites: 1 passed, 1 total
-Tests:       10 passed, 10 total
-Snapshots:   0 total
-Time:        0.612 s
-```
-
-### Resumen
-
-- ✅ 1 Suite ejecutada
-- ✅ 10 pruebas exitosas
-- ✅ 0 errores
-- ✅ 100% de cumplimiento de los casos definidos
-
----
-
-# 🏆 Conclusiones
-
-1. La metodología **Test Driven Development (TDD)** permitió diseñar primero los requisitos funcionales mediante pruebas automatizadas, promoviendo un desarrollo más estructurado y modular.
-
-2. El uso de **Jest** redujo significativamente el tiempo de validación de reglas de negocio complejas, facilitando su integración en procesos de **Integración Continua (CI/CD)**.
-
-3. Las pruebas automatizadas ayudan a prevenir regresiones futuras y aumentan la confiabilidad del sistema ante modificaciones o refactorizaciones del código.
-
----
-
-# 👨‍💻 Autor
-# Estudiante
-**Manuel Elias Ore Huasaja**
-
-
-Curso: IS-489 Pruebas y Aseguramiento de Calidad de Software  
-Universidad Nacional de San Cristóbal de Huamanga
+├── sonar-project.properties        # Configuración del escáner de SonarCloud
+├── package.json                    # Dependencias y scripts del proyecto
+└── README.md                       # Documentación principal del repositorio
